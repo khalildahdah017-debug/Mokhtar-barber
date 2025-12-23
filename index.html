@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOKHTAR BARBER - حجز المواعيد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .gradient-card { background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%); }
+        .card-inner { background: #181818; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse-custom { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-orange-50">
+    
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-12 shadow-lg border-b-4 border-orange-500 relative overflow-hidden">
+        <button onclick="checkAdminAccess()" class="absolute left-4 top-4 text-white opacity-20 hover:opacity-100 transition z-20">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+        </button>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="flex items-center justify-center mb-4">
+                <svg class="w-12 h-12 ml-3 text-orange-500 animate-pulse-custom" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
+                </svg>
+                <h1 class="text-5xl font-bold" style="color: #ff6b35; text-shadow: 2px 2px 4px rgba(0,0,0,0.3)">MOKHTAR BARBER</h1>
+            </div>
+            <p class="text-xl text-orange-300">مختار للحلاقة - احجز موعدك الآن</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Services Section -->
+            <div id="servicesSection" class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl shadow-xl p-8 mb-8 border-4 border-orange-500 relative overflow-hidden">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center relative z-10">
+                    <svg class="ml-2 text-orange-500 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121"/>
+                    </svg>
+                    خدماتنا
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6 relative z-10">
+                    <div onclick="selectService(1)" class="gradient-card cursor-pointer hover:scale-105 transition-transform duration-300 p-1 rounded-xl shadow-2xl">
+                        <div class="card-inner flex flex-col justify-center items-center min-h-[200px] rounded-lg p-5" id="service-1">
+                            <svg class="w-12 h-12 mb-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121"/>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-3 text-center text-white">قص شعر أطفال صغار</h3>
+                            <p class="font-semibold text-xl mb-2 text-yellow-500">150 دينار جزائري</p>
+                            <p class="text-sm opacity-80 text-white">20 دقيقة</p>
+                        </div>
+                    </div>
+                    
+                    <div onclick="selectService(2)" class="gradient-card cursor-pointer hover:scale-105 transition-transform duration-300 p-1 rounded-xl shadow-2xl">
+                        <div class="card-inner flex flex-col justify-center items-center min-h-[200px] rounded-lg p-5" id="service-2">
+                            <svg class="w-12 h-12 mb-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121"/>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-3 text-center text-white">قص شعر رجال</h3>
+                            <p class="font-semibold text-xl mb-2 text-yellow-500">300 دينار جزائري</p>
+                            <p class="text-sm opacity-80 text-white">30 دقيقة</p>
+                        </div>
+                    </div>
+                    
+                    <div onclick="selectService(3)" class="gradient-card cursor-pointer hover:scale-105 transition-transform duration-300 p-1 rounded-xl shadow-2xl">
+                        <div class="card-inner flex flex-col justify-center items-center min-h-[200px] rounded-lg p-5" id="service-3">
+                            <svg class="w-12 h-12 mb-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121"/>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-3 text-center text-white">حلاقة لحية</h3>
+                            <p class="font-semibold text-xl mb-2 text-yellow-500">150 دينار جزائري</p>
+                            <p class="text-sm opacity-80 text-white">20 دقيقة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="bookingForm" class="bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-xl p-8 border-4 border-slate-700">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                    <svg class="ml-2 text-orange-600 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    احجز موعدك
+                </h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">الاسم</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" placeholder="أدخل اسمك">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" placeholder="05xxxxxxxx">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">التاريخ</label>
+                        <input type="date" id="date" onchange="updateTimeSlots()" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            الوقت
+                            <span class="text-sm text-red-500 mr-2">(الأحمر = محجوز)</span>
+                        </label>
+                        <div id="timeSlots" class="grid grid-cols-3 md:grid-cols-6 gap-2"></div>
+                    </div>
+
+                    <button onclick="submitBooking()" class="w-full bg-gradient-to-r from-slate-700 to-slate-800 text-white py-4 rounded-lg font-bold text-lg hover:from-slate-800 hover:to-slate-900 transition shadow-lg border-2 border-orange-500">
+                        تأكيد الحجز
+                    </button>
+                </div>
+            </div>
+
+            <!-- Confirmation Screen -->
+            <div id="confirmationScreen" class="hidden bg-white rounded-2xl shadow-2xl p-8 text-center border-4 border-orange-500">
+                <svg class="w-20 h-20 text-green-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">تم الحجز بنجاح!</h2>
+                <div id="bookingDetails" class="bg-orange-50 rounded-xl p-6 mb-6 text-right border-2 border-orange-300"></div>
+                <button onclick="resetForm()" class="bg-gradient-to-r from-slate-700 to-slate-800 text-white px-8 py-3 rounded-lg hover:from-slate-800 hover:to-slate-900 transition text-lg font-semibold border-2 border-orange-500">
+                    حجز موعد آخر
+                </button>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="adminPanel" class="hidden">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 border-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                        <h2 class="text-3xl font-bold text-slate-800">لوحة التحكم - الحجوزات</h2>
+                        <div class="flex gap-2">
+                            <button onclick="filterBookings('all')" id="filterAll" class="px-4 py-2 rounded bg-slate-700 text-white">الكل</button>
+                            <button onclick="filterBookings('today')" id="filterToday" class="px-4 py-2 rounded bg-gray-200">اليوم</button>
+                            <button onclick="closeAdmin()" class="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600">إغلاق</button>
+                        </div>
+                    </div>
+                    <div id="bookingsList" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 p-8 rounded-xl text-white" style="background: hsla(240, 15%, 9%, 1); background-image: radial-gradient(at 88% 40%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%);">
+                <h3 class="text-2xl font-bold mb-2">تواصل معنا - MOKHTAR BARBER</h3>
+                <p class="text-sm text-gray-300">صالون مختار للحلاقة - خدمة احترافية بأفضل الأسعار</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = 'mokhtar2024';
+        const services = [
+            { id: 1, name: 'قص شعر أطفال صغار', price: '150 دينار جزائري', duration: '20 دقيقة' },
+            { id: 2, name: 'قص شعر رجال', price: '300 دينار جزائري', duration: '30 دقيقة' },
+            { id: 3, name: 'حلاقة لحية', price: '150 دينار جزائري', duration: '20 دقيقة' }
+        ];
+        const timeSlots = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
+        
+        let selectedService = null;
+        let selectedTime = null;
+        let currentFilter = 'all';
+
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        function getBookings() {
+            const bookings = localStorage.getItem('mokhtarBookings');
+            return bookings ? JSON.parse(bookings) : [];
+        }
+
+        function saveBookings(bookings) {
+            localStorage.setItem('mokhtarBookings', JSON.stringify(bookings));
+        }
+
+        function selectService(id) {
+            selectedService = id;
+            for (let i = 1; i <= 3; i++) {
+                const el = document.getElementById(`service-${i}`);
+                if (i === id) {
+                    el.style.color = '#f7ba2b';
+                    el.querySelector('svg').style.color = '#f7ba2b';
+                } else {
+                    el.style.color = '#fff';
+                    el.querySelector('svg').style.color = '#ea5358';
+                }
+            }
+        }
+
+        function updateTimeSlots() {
+            const date = document.getElementById('date').value;
+            const container = document.getElementById('timeSlots');
+            const bookings = getBookings();
+            
+            container.innerHTML = '';
+            timeSlots.forEach(time => {
+                const isBooked = bookings.some(b => b.date === date && b.time === time);
+                const button = document.createElement('button');
+                button.textContent = time;
+                button.className = `py-2 px-3 rounded-lg border-2 transition ${
+                    isBooked ? 'bg-red-500 text-white border-red-500 cursor-not-allowed opacity-60' :
+                    selectedTime === time ? 'bg-orange-600 text-white border-orange-600' :
+                    'border-gray-200 hover:border-orange-300'
+                }`;
+                button.disabled = isBooked || !date;
+                if (!isBooked) {
+                    button.onclick = () => {
+                        selectedTime = time;
+                        updateTimeSlots();
+                    };
+                }
+                container.appendChild(button);
+            });
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            
+            if (!selectedService || !selectedTime || !name || !phone || !date) {
+                alert('الرجاء ملء جميع الحقول');
+                return;
+            }
+
+            const service = services.find(s => s.id === selectedService);
+            const booking = {
+                id: Date.now(),
+                name, phone, date,
+                time: selectedTime,
+                service: service.name,
+                price: service.price,
+                createdAt: new Date().toISOString(),
+                status: 'جديد'
+            };
+
+            const bookings = getBookings();
+            bookings.push(booking);
+            saveBookings(bookings);
+
+            document.getElementById('bookingDetails').innerHTML = `
+                <p class="text-lg mb-2"><strong>الاسم:</strong> ${name}</p>
+                <p class="text-lg mb-2"><strong>الهاتف:</strong> ${phone}</p>
+                <p class="text-lg mb-2"><strong>الخدمة:</strong> ${service.name}</p>
+                <p class="text-lg mb-2"><strong>التاريخ:</strong> ${date}</p>
+                <p class="text-lg"><strong>الوقت:</strong> ${selectedTime}</p>
+            `;
+
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('servicesSection').classList.add('hidden');
+            document.getElementById('confirmationScreen').classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('date').value = '';
+            selectedService = null;
+            selectedTime = null;
+            updateTimeSlots();
+            for (let i = 1; i <= 3; i++) {
+                const el = document.getElementById(`service-${i}`);
+                el.style.color = '#fff';
+                el.querySelector('svg').style.color = '#ea5358';
+            }
+            document.getElementById('confirmationScreen').classList.add('hidden');
+            document.getElementById('bookingForm').classList.remove('hidden');
+            document.getElementById('servicesSection').classList.remove('hidden');
+        }
+
+        function checkAdminAccess() {
+            const password = prompt('أدخل كلمة المرور:');
+            if (password === ADMIN_PASSWORD) {
+                showAdminPanel();
+            } else if (password) {
+                alert('كلمة المرور غير صحيحة!');
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('servicesSection').classList.add('hidden');
+            document.getElementById('confirmationScreen').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            displayBookings();
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('bookingForm').classList.remove('hidden');
+            document.getElementById('servicesSection').classList.remove('hidden');
+        }
+
+        function filterBookings(filter) {
+            currentFilter = filter;
+            document.getElementById('filterAll').className = filter === 'all' ? 'px-4 py-2 rounded bg-slate-700 text-white' : 'px-4 py-2 rounded bg-gray-200';
+            document.getElementById('filterToday').className = filter === 'today' ? 'px-4 py-2 rounded bg-orange-500 text-white' : 'px-4 py-2 rounded bg-gray-200';
+            displayBookings();
+        }
+
+        function displayBookings() {
+            const bookings = getBookings();
+            const today = new Date().toISOString().split('T')[0];
+            const filtered = currentFilter === 'today' ? bookings.filter(b => b.date === today) : bookings;
+            const container = document.getElementById('bookingsList');
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="text-center py-12 text-gray-500"><p class="text-xl">لا توجد حجوزات</p></div>';
+                return;
+            }
+
+            container.innerHTML = filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(b => `
+                <div class="bg-gradient-to-r from-slate-50 to-orange-50 rounded-xl p-6 border-2 border-slate-300 shadow-lg">
+                    <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">${b.name}</h3>
+                            <p class="text-slate-600">${b.phone}</p>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="px-3 py-1 rounded-full text-sm font-semibold ${
+                                b.status === 'جديد' ? 'bg-green-500 text-white' :
+                                b.status === 'مكتمل' ? 'bg-blue-500 text-white' :
+                                'bg-gray-500 text-white'
+                            }">${b.status}</span>
+                            <button onclick="deleteBooking(${b.id})" class="text-red-500 hover:text-red-700">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
